@@ -1,0 +1,29 @@
+
+% Define the frequency range
+omega = logspace(-1, 2, 500);
+
+% Calculate the frequency response L(jω) = 10 / (jω + 1)^2
+L_jw = 10 ./ (1i * omega + 1).^2;
+
+% Calculate the magnitude and phase
+magnitude = abs(L_jw);
+phase = angle(L_jw);
+
+% Plot the magnitude and phase
+figure;
+
+% Magnitude plot
+subplot(2, 1, 1);
+semilogx(omega, 20*log10(magnitude));
+title('Magnitude Response');
+xlabel('Frequency (ω)');
+ylabel('Magnitude (dB)');
+grid on;
+
+% Phase plot
+subplot(2, 1, 2);
+semilogx(omega, rad2deg(phase));
+title('Phase Response');
+xlabel('Frequency (ω)');
+ylabel('Phase (degrees)');
+grid on;
